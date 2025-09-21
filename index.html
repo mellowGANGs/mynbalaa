@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мынбала - Детский развлекательный центр</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button onclick="toggleLanguage()" id="langToggle">
+            <i class="fas fa-globe"></i> 
+            <span data-ru="Қазақша" data-kz="Русский">Қазақша</span>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Мынбала" onerror="this.style.display='none'">
+                <h1>Мынбала</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" data-ru="Главная" data-kz="Басты">Главная</a></li>
+                <li><a href="#menu" data-ru="Меню" data-kz="Мәзір">Меню</a></li>
+                <li><a href="#attractions" data-ru="Аттракционы" data-kz="Аттракциондар">Аттракционы</a></li>
+                <li><a href="#booking" data-ru="Бронирование" data-kz="Брондау">Бронирование</a></li>
+                <li><a href="#news" data-ru="Новости" data-kz="Жаңалықтар">Новости</a></li>
+                <li><a href="#contact" data-ru="Контакты" data-kz="Байланыс">Контакты</a></li>
+                <li><a href="#admin" class="admin-link" data-ru="Админ" data-kz="Әкімші">Админ</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <!-- Enhanced Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Emergency Button -->
+    <button class="emergency-button" onclick="triggerEmergency()" title="Экстренная связь с родителями">
+        🚨
+    </button>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <a href="#home" class="mobile-nav-item"><i class="fas fa-home"></i><span data-ru="Главная" data-kz="Басты">Главная</span></a>
+        <a href="#menu" class="mobile-nav-item"><i class="fas fa-utensils"></i><span data-ru="Меню" data-kz="Мәзір">Меню</span></a>
+        <a href="#attractions" class="mobile-nav-item"><i class="fas fa-playground"></i><span data-ru="Аттракционы" data-kz="Аттракциондар">Аттракционы</span></a>
+        <a href="#booking" class="mobile-nav-item"><i class="fas fa-calendar-alt"></i><span data-ru="Бронирование" data-kz="Брондау">Бронирование</span></a>
+        <a href="#news" class="mobile-nav-item"><i class="fas fa-newspaper"></i><span data-ru="Новости" data-kz="Жаңалықтар">Новости</span></a>
+        <a href="#contact" class="mobile-nav-item"><i class="fas fa-phone"></i><span data-ru="Контакты" data-kz="Байланыс">Контакты</span></a>
+    </div>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 data-ru="Добро пожаловать в Мынбала!" data-kz="Мынбалаға қош келдіңіз!">Добро пожаловать в Мынбала!</h1>
+                <p data-ru="Лучшее место для детского отдыха и развлечений!" data-kz="Балалар демалысы мен ойын-сауыққа арналған ең жақсы орын!">Лучшее место для детского отдыха и развлечений!</p>
+                <div class="hero-info">
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3 data-ru="Время работы" data-kz="Жұмыс уақыты">Время работы</h3>
+                        <p>11:00 - 23:00</p>
+                        <small data-ru="Без выходных" data-kz="Демалыссыз">Без выходных</small>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-ticket-alt"></i>
+                        <h3 data-ru="Цены входа" data-kz="Кіру бағасы">Цены входа</h3>
+                        <p data-ru="Будни: 3.000₸" data-kz="Жұмыс күндері: 3.000₸">Будни: 3.000₸</p>
+                        <p data-ru="Выходные: 3.500₸" data-kz="Демалыс күндері: 3.500₸">Выходные: 3.500₸</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3 data-ru="Наши города" data-kz="Біздің қалалар">Наши города</h3>
+                        <p>Тараз, Шымкент</p>
+                        <p>Атырау, Аксукент</p>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="scrollToSection('booking')" data-ru="Забронировать стол" data-kz="Үстел брондау">Забронировать стол</button>
+            </div>
+            <div class="hero-animation">
+                <div class="floating-elements">
+                    <div class="element balloon">🎈</div>
+                    <div class="element star">⭐</div>
+                    <div class="element heart">💝</div>
+                    <div class="element cake">🎂</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="menu-section">
+            <div class="container">
+                <h2 data-ru="Наше меню" data-kz="Біздің мәзір">Наше меню</h2>
+                <div class="menu-categories">
+                    <div class="category-nav">
+                        <button class="category-btn active" data-category="kids" data-ru="Детское меню" data-kz="Балалар мәзірі">Детское меню</button>
+                        <button class="category-btn" data-category="drinks" data-ru="Напитки" data-kz="Сусындар">Напитки</button>
+                        <button class="category-btn" data-category="cold-snacks" data-ru="Холодные закуски" data-kz="Суық жеңіл тағамдар">Холодные закуски</button>
+                        <button class="category-btn" data-category="salads" data-ru="Салаты" data-kz="Салаттар">Салаты</button>
+                        <button class="category-btn" data-category="main-dishes" data-ru="Вторые блюда" data-kz="Екінші тағамдар">Вторые блюда</button>
+                        <button class="category-btn" data-category="pizza" data-ru="Пицца" data-kz="Пицца">Пицца</button>
+                        <button class="category-btn" data-category="pasta" data-ru="Паста" data-kz="Паста">Паста</button>
+                        <button class="category-btn" data-category="sushi" data-ru="Суши" data-kz="Суши">Суши</button>
+                        <button class="category-btn" data-category="fast-food" data-ru="Фаст фуд" data-kz="Фаст фуд">Фаст фуд</button>
+                        <button class="category-btn" data-category="lemonades" data-ru="Лимонады" data-kz="Лимонадтар">Лимонады</button>
+                        <button class="category-btn" data-category="mynbala-tea" data-ru="Авторские чаи Mynbala" data-kz="Mynbala авторлық шайлар">Авторские чаи Mynbala</button>
+                        <button class="category-btn" data-category="cocktails" data-ru="Коктейлы" data-kz="Коктейльдер">Коктейлы</button>
+                        <button class="category-btn" data-category="penalties" data-ru="Штрафы" data-kz="Айыппұлдар">Штрафы</button>
+                    </div>
+                    
+                    <div class="menu-content">
+                        <!-- Menu items will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attractions Section -->
+        <section id="attractions" class="attractions-section">
+            <div class="container">
+                <h2 data-ru="Наши аттракционы" data-kz="Біздің аттракциондар">Наши аттракционы</h2>
+                <p class="attractions-subtitle" data-ru="Все аттракционы бесплатные при входе!" data-kz="Кіру кезінде барлық аттракциондар тегін!">Все аттракционы бесплатные при входе!</p>
+                
+                <!-- Smart Recommendations Panel -->
+                <div class="recommendation-panel">
+                    <div class="recommendation-title">
+                        <span class="ai-icon">🤖</span>
+                        <span data-ru="Умные рекомендации по возрасту" data-kz="Жас бойынша ақылды ұсыныстар">Умные рекомендации по возрасту</span>
+                    </div>
+                    <p data-ru="Выберите возраст ребенка и получите персональные рекомендации аттракционов" data-kz="Баланың жасын таңдап, аттракциондардың жеке ұсыныстарын алыңыз">Выберите возраст ребенка и получите персональные рекомендации аттракционов</p>
+                    
+                    <div class="age-selector">
+                        <div class="age-badge" data-age="2-4" onclick="selectAge('2-4')">2-4 <span data-ru="года" data-kz="жас">года</span></div>
+                        <div class="age-badge" data-age="5-7" onclick="selectAge('5-7')">5-7 <span data-ru="лет" data-kz="жас">лет</span></div>
+                        <div class="age-badge" data-age="8-10" onclick="selectAge('8-10')">8-10 <span data-ru="лет" data-kz="жас">лет</span></div>
+                        <div class="age-badge" data-age="11-14" onclick="selectAge('11-14')">11-14 <span data-ru="лет" data-kz="жас">лет</span></div>
+                        <div class="age-badge" data-age="all" onclick="selectAge('all')" data-ru="Все возрасты" data-kz="Барлық жастар">Все возрасты</div>
+                    </div>
+                    
+                    <div class="recommended-attractions" id="recommendedAttractions">
+                        <!-- Recommended attractions will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="attractions-grid">
+                    <!-- Attractions will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="booking-section">
+            <div class="container">
+                <h2 data-ru="Бронирование столика" data-kz="Үстел брондау">Бронирование столика</h2>
+                <div class="booking-form-container">
+                    <form id="bookingForm" class="booking-form">
+                        <div class="form-group">
+                            <label data-ru="Ваше имя" data-kz="Сіздің атыңыз">Ваше имя</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-ru="Телефон" data-kz="Телефон">Телефон</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-ru="Город" data-kz="Қала">Город</label>
+                            <select name="city" required>
+                                <option value="">Выберите город</option>
+                                <option value="taraz">Тараз</option>
+                                <option value="shymkent">Шымкент</option>
+                                <option value="atyrau">Атырау</option>
+                                <option value="aksukent">Аксукент</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-ru="Дата" data-kz="Күні">Дата</label>
+                                <input type="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-ru="Время" data-kz="Уақыт">Время</label>
+                                <input type="time" name="time" min="11:00" max="22:00" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-ru="Количество детей" data-kz="Балалар саны">Количество детей</label>
+                                <input type="number" name="children" min="1" max="20" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-ru="Количество взрослых" data-kz="Ересектер саны">Количество взрослых</label>
+                                <input type="number" name="adults" min="1" max="20" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-ru="Особые пожелания" data-kz="Ерекше тілектер">Особые пожелания</label>
+                            <textarea name="comments" rows="3" placeholder="Торт, украшения, особые потребности..."></textarea>
+                        </div>
+                        
+                        <!-- Payment Methods -->
+                        <div class="form-group">
+                            <label data-ru="Способ оплаты" data-kz="Төлем тәсілі">Способ оплаты</label>
+                            <div class="payment-methods">
+                                <div class="payment-method" data-payment="card" onclick="selectPayment('card')">
+                                    <div class="payment-icon">💳</div>
+                                    <div class="payment-name" data-ru="Карта" data-kz="Карта">Карта</div>
+                                </div>
+                                <div class="payment-method" data-payment="kaspi" onclick="selectPayment('kaspi')">
+                                    <div class="payment-icon">📱</div>
+                                    <div class="payment-name">Kaspi QR</div>
+                                </div>
+                                <div class="payment-method" data-payment="cash" onclick="selectPayment('cash')">
+                                    <div class="payment-icon">💵</div>
+                                    <div class="payment-name" data-ru="Наличные" data-kz="Қолма-қол">Наличные</div>
+                                </div>
+                                <div class="payment-method" data-payment="halyk" onclick="selectPayment('halyk')">
+                                    <div class="payment-icon">🏦</div>
+                                    <div class="payment-name">Halyk Bank</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn bounce-on-click" data-ru="Забронировать" data-kz="Брондау">Забронировать</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="news-section">
+            <div class="container">
+                <h2 data-ru="Новости и обновления" data-kz="Жаңалықтар мен жаңартулар">Новости и обновления</h2>
+                <div class="news-grid">
+                    <!-- News will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 data-ru="Контакты" data-kz="Байланыс">Контакты</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>Тараз</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Адрес в Таразе</p>
+                        <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Шымкент</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Адрес в Шымкенте</p>
+                        <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Атырау</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Адрес в Атырау</p>
+                        <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Аксукент</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Адрес в Аксукенте</p>
+                        <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Login Modal -->
+        <div id="adminModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 data-ru="Административный вход" data-kz="Әкімшілік кіру">Административный вход</h2>
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label data-ru="Логин" data-kz="Логин">Логин</label>
+                        <input type="text" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-ru="Пароль" data-kz="Құпия сөз">Пароль</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-ru="Филиал" data-kz="Филиал">Филиал</label>
+                        <select name="branch" required>
+                            <option value="">Выберите филиал</option>
+                            <option value="taraz">Тараз</option>
+                            <option value="shymkent">Шымкент</option>
+                            <option value="atyrau">Атырау</option>
+                            <option value="aksukent">Аксукент</option>
+                            <option value="main">Главный офис</option>
+                        </select>
+                    </div>
+                    <button type="submit" data-ru="Войти" data-kz="Кіру">Войти</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="admin-panel" style="display: none;">
+            <div class="admin-header">
+                <h2 data-ru="Административная панель" data-kz="Әкімшілік панель">Административная панель</h2>
+                <div class="admin-user-info">
+                    <span id="adminUserName"></span>
+                    <button onclick="logout()" data-ru="Выйти" data-kz="Шығу">Выйти</button>
+                </div>
+            </div>
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-tab="dashboard" data-ru="Главная" data-kz="Басты">Главная</button>
+                <button class="admin-tab-btn" data-tab="menu-management" data-ru="Управление меню" data-kz="Мәзірді басқару">Управление меню</button>
+                <button class="admin-tab-btn" data-tab="bookings" data-ru="Бронирования" data-kz="Брондаулар">Бронирования</button>
+                <button class="admin-tab-btn" data-tab="news-management" data-ru="Управление новостями" data-kz="Жаңалықтарды басқару">Управление новостями</button>
+                <button class="admin-tab-btn" data-tab="analytics" data-ru="Аналитика" data-kz="Аналитика">Аналитика</button>
+                <button class="admin-tab-btn" data-tab="qr-system" data-ru="QR-система" data-kz="QR-жүйе">QR-система</button>
+            </div>
+            <div class="admin-content">
+                <!-- Admin content will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Мынбала</h3>
+                    <p data-ru="Лучшее место для детского отдыха и развлечений в Казахстане!" data-kz="Қазақстандағы балалар демалысы мен ойын-сауыққа арналған ең жақсы орын!">Лучшее место для детского отдыха и развлечений в Казахстане!</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-ru="Время работы" data-kz="Жұмыс уақыты">Время работы</h4>
+                    <p>11:00 - 23:00</p>
+                    <p data-ru="Ежедневно, без выходных" data-kz="Күн сайын, демалыссыз">Ежедневно, без выходных</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-ru="Наши города" data-kz="Біздің қалалар">Наши города</h4>
+                    <p>Тараз • Шымкент</p>
+                    <p>Атырау • Аксукент</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-ru="Следите за нами" data-kz="Бізді бақылаңыз">Следите за нами</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Мынбала. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

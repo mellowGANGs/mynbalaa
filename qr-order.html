@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказ со стола | Мынбала</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="qr-order.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="qr-order-page">
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button onclick="toggleLanguage()" id="langToggle">
+            <i class="fas fa-globe"></i> 
+            <span data-ru="Қазақша" data-kz="Русский">Қазақша</span>
+        </button>
+    </div>
+
+    <!-- Table Info Header -->
+    <div class="table-header">
+        <div class="table-info">
+            <h1>
+                <i class="fas fa-utensils"></i>
+                <span data-ru="Стол №" data-kz="Үстел №">Стол №</span>
+                <span id="tableNumber">1</span>
+            </h1>
+            <div class="order-status" id="orderStatus">
+                <i class="fas fa-clock"></i>
+                <span data-ru="Готовы принять заказ" data-kz="Тапсырысты қабылдауға дайын">Готовы принять заказ</span>
+            </div>
+        </div>
+        <div class="cart-summary" id="cartSummary">
+            <button class="cart-btn" onclick="openCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+                <span class="cart-total" id="cartTotal">0₸</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Personal Recommendations Banner -->
+    <div class="recommendations-banner">
+        <div class="banner-content">
+            <div class="banner-icon">🎯</div>
+            <div class="banner-text">
+                <h3 data-ru="Персональные рекомендации" data-kz="Жеке ұсыныстар">Персональные рекомендации</h3>
+                <p data-ru="Укажите возраст детей для подбора идеальных блюд" data-kz="Баланың жасын көрсетіп, тамаша тағамдарды таңдаңыз">Укажите возраст детей для подбора идеальных блюд</p>
+            </div>
+            <button class="banner-btn" onclick="showAgeSelector()">
+                <span data-ru="Настроить" data-kz="Баптау">Настроить</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Age Selector Modal -->
+    <div class="age-selector-modal" id="ageSelectorModal">
+        <div class="modal-content">
+            <h3 data-ru="Выберите возраст детей" data-kz="Балалардың жасын таңдаңыз">Выберите возраст детей</h3>
+            <div class="age-options">
+                <button class="age-option" data-age="0-2" onclick="selectAgeGroup('0-2')">
+                    <i class="fas fa-baby"></i>
+                    <span>0-2 <small data-ru="года" data-kz="жас">года</small></span>
+                </button>
+                <button class="age-option" data-age="3-6" onclick="selectAgeGroup('3-6')">
+                    <i class="fas fa-child"></i>
+                    <span>3-6 <small data-ru="лет" data-kz="жас">лет</small></span>
+                </button>
+                <button class="age-option" data-age="7-12" onclick="selectAgeGroup('7-12')">
+                    <i class="fas fa-user-friends"></i>
+                    <span>7-12 <small data-ru="лет" data-kz="жас">лет</small></span>
+                </button>
+                <button class="age-option" data-age="13+" onclick="selectAgeGroup('13+')">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>13+ <small data-ru="лет" data-kz="жас">лет</small></span>
+                </button>
+            </div>
+            <button class="close-modal-btn" onclick="closeAgeSelector()">
+                <span data-ru="Готово" data-kz="Дайын">Готово</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Personal Recommendations Section -->
+    <div class="personal-recommendations" id="personalRecommendations" style="display: none;">
+        <h3><i class="fas fa-star"></i> <span data-ru="Рекомендуем для вас" data-kz="Сізге ұсынамыз">Рекомендуем для вас</span></h3>
+        <div class="recommended-items" id="recommendedItems">
+            <!-- Recommendations will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Menu Categories -->
+    <div class="menu-categories">
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="kids" onclick="selectCategory('kids')">
+                <i class="fas fa-baby-carriage"></i>
+                <span data-ru="Детское" data-kz="Балалар">Детское</span>
+            </button>
+            <button class="category-tab" data-category="drinks" onclick="selectCategory('drinks')">
+                <i class="fas fa-glass-cheers"></i>
+                <span data-ru="Напитки" data-kz="Сусындар">Напитки</span>
+            </button>
+            <button class="category-tab" data-category="main" onclick="selectCategory('main')">
+                <i class="fas fa-hamburger"></i>
+                <span data-ru="Основные" data-kz="Негізгі">Основные</span>
+            </button>
+            <button class="category-tab" data-category="desserts" onclick="selectCategory('desserts')">
+                <i class="fas fa-ice-cream"></i>
+                <span data-ru="Десерты" data-kz="Десерттер">Десерты</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="menu-items" id="menuItems">
+        <!-- Menu items will be populated by JavaScript -->
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3><i class="fas fa-shopping-cart"></i> <span data-ru="Ваш заказ" data-kz="Сіздің тапсырысыңыз">Ваш заказ</span></h3>
+                <button class="close-cart" onclick="closeCart()">×</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p data-ru="Корзина пуста" data-kz="Себет бос">Корзина пуста</p>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total-section">
+                    <div class="total-line">
+                        <span data-ru="Итого:" data-kz="Барлығы:">Итого:</span>
+                        <span id="finalTotal">0₸</span>
+                    </div>
+                </div>
+                <div class="cart-actions">
+                    <button class="continue-shopping" onclick="closeCart()">
+                        <span data-ru="Продолжить выбор" data-kz="Таңдауды жалғастыру">Продолжить выбор</span>
+                    </button>
+                    <button class="place-order" onclick="placeOrder()">
+                        <span data-ru="Оформить заказ" data-kz="Тапсырыс беру">Оформить заказ</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Status Notifications -->
+    <div class="order-notifications" id="orderNotifications">
+        <!-- Notifications will appear here -->
+    </div>
+
+    <!-- Back to Main Site -->
+    <div class="back-to-main">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span data-ru="На главную" data-kz="Басты бетке">На главную</span>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="qr-order.js"></script>
+</body>
+</html>
